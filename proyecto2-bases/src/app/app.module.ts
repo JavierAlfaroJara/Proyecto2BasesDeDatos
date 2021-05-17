@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatTabsModule, MatCardModule  } from '@angular/material';
+import { MatTabsModule, MatCardModule, MatTableModule, MatPaginatorModule, MatButtonModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,10 +23,17 @@ import { ListNodesComponent } from './components/list-nodes/list-nodes.component
     BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
     AppRoutingModule
   ],
   exports: [
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatTableModule,
+    MatButtonModule,
+    MatPaginatorModule
   ],
   entryComponents:[
     HomeComponent
