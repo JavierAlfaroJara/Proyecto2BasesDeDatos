@@ -25,10 +25,13 @@
       <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
     </ng-container>
 
+    <!-- Actions Column -->   
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Ventas </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary"> ... </button>
+        <button mat-mini-fab color="primary">
+          ...
+        </button>
       </td>
     </ng-container>
 

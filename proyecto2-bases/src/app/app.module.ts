@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatTabsModule, MatCardModule, MatTableModule, MatPaginatorModule, MatButtonModule } from '@angular/material';
+import { MatTabsModule, MatCardModule, MatTableModule, MatPaginatorModule, MatButtonModule, MatSlideToggleModule, MatIconModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,8 @@ import { ListNodesComponent } from './components/list-nodes/list-nodes.component
     MatTableModule,
     MatPaginatorModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatIconModule,
     AppRoutingModule
   ],
   exports: [
@@ -33,6 +35,8 @@ import { ListNodesComponent } from './components/list-nodes/list-nodes.component
     MatCardModule,
     MatTableModule,
     MatButtonModule,
+    MatSlideToggleModule,
+    MatIconModule,
     MatPaginatorModule
   ],
   entryComponents:[
