@@ -34,10 +34,8 @@ export class ListTopComponent implements AfterViewInit {
           nombreProducto: actual.nombre_producto, 
           vendidos: actual.cantidad_productos_vendidos,
         };
-        console.log(json)
         temp.push(json)
       }
-      console.log(temp)
       this.topProducts = temp
       this.dataSource.data = this.topProducts
       this.dataSource.paginator = this.paginator

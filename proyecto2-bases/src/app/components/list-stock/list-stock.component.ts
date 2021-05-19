@@ -21,7 +21,20 @@ export class ListStockComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.getAllStockProducts()
   }
-
+  updateProduct(idNodo, idProducto){
+    this.apiService.changeAlerta(idNodo,idProducto).subscribe((res) => 
+    {
+      for (let index = 0; index < this.stockProductos.length; index++) {
+        const actual = this.stockProductos[index];
+        if((actual.idNodo == idNodo ) && (actual.idProducto == idProducto)){
+          actual.isChecked = res.body[0]
+        }
+      }
+    })
+      
+    
+  }
+  
   getAllStockProducts(){
     this.apiService.getAllStockProductos().subscribe((res)=>
     {
@@ -36,10 +49,8 @@ export class ListStockComponent implements AfterViewInit {
           idNodo: actual.id_nodo,
           isChecked: actual.alerta
          };
-         console.log(json)
          temp.push(json)
        }
-       console.log(temp)
        this.stockProductos = temp
        this.dataSource.data = this.stockProductos
        this.dataSource.paginator = this.paginator

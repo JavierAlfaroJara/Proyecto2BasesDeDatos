@@ -34,10 +34,8 @@ export class ListNodesComponent implements AfterViewInit {
           ipN: actual.ip,
           usuario: actual.usuario
         };
-        console.log(json)
         temp.push(json)
       }
-      console.log(temp)
       this.nodos = temp
       this.dataSource.data = this.nodos
       this.dataSource.paginator = this.paginator

@@ -29,8 +29,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Solucionado </th>
       <td mat-cell *matCellDef="let element">
-        <mat-slide-toggle *ngIf="element.isChecked" checked="true" color="primary" (click)="updateProduct(element)"> </mat-slide-toggle>
-        <mat-slide-toggle *ngIf="!element.isChecked" checked="false" color="primary" (click)="updateProduct(element)"> </mat-slide-toggle>
+        <mat-slide-toggle *ngIf="element.isChecked" checked="true" color="primary" (click)="updateProduct(element.idNodo, element.idProducto)"> </mat-slide-toggle>
+        <mat-slide-toggle *ngIf="!element.isChecked" checked="false" color="primary" (click)="updateProduct(element.idNodo, element.idProducto)"> </mat-slide-toggle>
       </td>
     </ng-container>
 
