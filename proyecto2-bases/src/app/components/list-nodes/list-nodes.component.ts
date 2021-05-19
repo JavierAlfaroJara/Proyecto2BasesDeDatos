@@ -9,15 +9,39 @@ import {ApiServiceService} from '../../services/api-service.service';
   styleUrls: ['./list-nodes.component.css']
 })
 export class ListNodesComponent implements AfterViewInit {
+  nodos: Nodo[] = []
   displayedColumns: string[] = ['idN', 'nombre', 'ipN', 'usuario', 'actions'];
-  dataSource = new MatTableDataSource<Nodo>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Nodo>(this.nodos);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor( public apiService:ApiServiceService, ) {}
-
+  data:Nodo[] = [] 
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.getListNodes()
+  }
+
+  getListNodes(){
+   this.apiService.getNodos().subscribe((res)=>
+   {
+     let temp:Nodo[] = []
+      for (let index = 0; index < res.body.length; index++) {
+        const actual = res.body[index];
+
+        const json = {
+          idN: actual.id, 
+          nombre: actual.nombre_base_datos, 
+          ipN: actual.ip,
+          usuario: actual.usuario
+        };
+        console.log(json)
+        temp.push(json)
+      }
+      console.log(temp)
+      this.nodos = temp
+      this.dataSource.data = this.nodos
+      this.dataSource.paginator = this.paginator
+   })
   }
 }
 

@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListTopComponent } from './components/list-top/list-top.component';
 import { ListStockComponent } from './components/list-stock/list-stock.component';
 import { ListNodesComponent } from './components/list-nodes/list-nodes.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ListNodesComponent } from './components/list-nodes/list-nodes.component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
     MatCardModule,

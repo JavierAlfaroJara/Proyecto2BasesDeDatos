@@ -9,8 +9,9 @@ import {ApiServiceService} from '../../services/api-service.service';
   styleUrls: ['./list-stock.component.css']
 })
 export class ListStockComponent implements AfterViewInit {
+  stockProductos:Stock[] = []
   displayedColumns: string[] = ['idProducto', 'nombreProducto', 'cantidad', 'idNodo', 'actions'];
-  dataSource = new MatTableDataSource<Stock>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Stock>(this.stockProductos);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -18,7 +19,34 @@ export class ListStockComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.getAllStockProducts()
   }
+
+  getAllStockProducts(){
+    this.apiService.getAllStockProductos().subscribe((res)=>
+    {
+      let temp:Stock[] = []
+       for (let index = 0; index < res.body.length; index++) {
+         const actual = res.body[index];
+ 
+         const json = {
+          idProducto: actual.id_producto, 
+          nombreProducto: actual.nombre_producto, 
+          cantidad: actual.cantidad_stock_productos,
+          idNodo: actual.id_nodo,
+          isChecked: actual.alerta
+         };
+         console.log(json)
+         temp.push(json)
+       }
+       console.log(temp)
+       this.stockProductos = temp
+       this.dataSource.data = this.stockProductos
+       this.dataSource.paginator = this.paginator
+    })
+   }
+
+
 }
 
 export interface Stock {

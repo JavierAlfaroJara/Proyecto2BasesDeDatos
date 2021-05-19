@@ -9,8 +9,9 @@ import {ApiServiceService} from '../../services/api-service.service';
   styleUrls: ['./list-top.component.css']
 })
 export class ListTopComponent implements AfterViewInit {
+  topProducts:Stock[] = []
   displayedColumns: string[] = ['idProducto', 'nombreProducto', 'vendidos'];
-  dataSource = new MatTableDataSource<Stock>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Stock>(this.topProducts);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -18,7 +19,33 @@ export class ListTopComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.getTopProducts()
   }
+
+  getTopProducts(){
+    this.apiService.getTopProductos().subscribe((res) => 
+    {
+      let temp:Stock[] = []
+      for (let index = 0; index < res.body.length; index++) {
+        const actual = res.body[index];
+
+        const json = {
+          idProducto: actual.id_producto, 
+          nombreProducto: actual.nombre_producto, 
+          vendidos: actual.cantidad_productos_vendidos,
+        };
+        console.log(json)
+        temp.push(json)
+      }
+      console.log(temp)
+      this.topProducts = temp
+      this.dataSource.data = this.topProducts
+      this.dataSource.paginator = this.paginator
+    })
+  }
+
+
+
 }
 
 export interface Stock {

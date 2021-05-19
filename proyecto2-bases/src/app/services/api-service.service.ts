@@ -41,7 +41,7 @@ export class ApiServiceService {
   }
 
   //obtiene el top 10 de los productos mas vendidos en los ultimos 3 meses 
-  getTopProductos(idNodo: any ,idProducto: any) : Observable<any>{
+  getTopProductos() : Observable<any>{
     console.log("Algo pasa ")
     return this.http.get(`${this._apiURL}/topProductos`, {
       observe: "response"
