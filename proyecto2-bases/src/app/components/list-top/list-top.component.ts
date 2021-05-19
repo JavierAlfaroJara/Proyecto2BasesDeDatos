@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {ApiServiceService} from '../../services/api-service.service';
 
 @Component({
   selector: 'app-list-top',
@@ -12,6 +13,8 @@ export class ListTopComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Stock>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  constructor( public apiService:ApiServiceService, ) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
