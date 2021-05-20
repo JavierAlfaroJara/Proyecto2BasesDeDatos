@@ -21,6 +21,7 @@ export class ListStockComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.getAllStockProducts()
   }
+
   updateProduct(idNodo, idProducto){
     this.apiService.changeAlerta(idNodo,idProducto).subscribe((res) => 
     {
@@ -31,8 +32,6 @@ export class ListStockComponent implements AfterViewInit {
         }
       }
     })
-      
-    
   }
   
   getAllStockProducts(){
@@ -56,8 +55,6 @@ export class ListStockComponent implements AfterViewInit {
        this.dataSource.paginator = this.paginator
     })
    }
-
-
 }
 
 export interface Stock {

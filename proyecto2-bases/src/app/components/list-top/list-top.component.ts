@@ -41,9 +41,6 @@ export class ListTopComponent implements AfterViewInit {
       this.dataSource.paginator = this.paginator
     })
   }
-
-
-
 }
 
 export interface Stock {
