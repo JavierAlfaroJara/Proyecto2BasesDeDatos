@@ -46,7 +46,8 @@ import { ChartDialogComponent } from './components/dialogs/chart-dialog/chart-di
     MatPaginatorModule
   ],
   entryComponents:[
-    HomeComponent
+    HomeComponent,
+    ChartDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
