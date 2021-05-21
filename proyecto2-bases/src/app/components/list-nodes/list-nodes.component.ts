@@ -45,27 +45,15 @@ export class ListNodesComponent implements AfterViewInit {
    })
   }
 
-  openDialog(idNodo): void{
+  
 
-    this.apiService.getRegistroMensual(idNodo).subscribe((res) =>
-      {
-        let temp: any[] = [];
-        for(let index = 0; index < res.body.leght; index++){
-          const actual = res.body[index];
-
-          temp.push(actual.cantidad_ventas)
-        }
-        this.ventas = temp;
-
-        const dialogConfig = new MatDialogConfig();
+  openDialog(idNodo): void {
+    const dialogConfig = new MatDialogConfig();
         dialogConfig.width = '550px';
         dialogConfig.data = {
           idN: idNodo,
-          ventas: this.ventas
         }
         const dialogRef = this.dialog.open(ChartDialogComponent, dialogConfig);
-      }
-    )
   }
 }
 
